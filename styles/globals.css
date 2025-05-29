@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles can be added below */
+body {
+  @apply bg-gray-50;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+.btn {
+  @apply px-4 py-2 rounded font-medium transition-colors duration-200;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.team-logo {
+  @apply w-12 h-12 object-contain;
+}
+
+@media (max-width: 640px) {
+  .team-logo {
+    @apply w-8 h-8;
+  }
+}

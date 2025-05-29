@@ -1,0 +1,37 @@
+# Scheduled Data Fetching Workflow
+name: Fetch Sports Data
+
+on:
+  # Runs every day at 6 AM UTC
+  schedule:
+    - cron: '0 6 * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Fetch latest sports data
+        run: node scripts/fetch-sports-data.js
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          
+      - name: Commit and push if changes
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add data/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update sports data" && git push)

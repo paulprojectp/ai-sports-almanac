@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+
+# Next.js build output
+.next/
+out/
+out/.nojekyll
+
+# Local env vars
+.env.local
+.env.*.local
+
+# macOS / IDE artefacts
+.DS_Store
+*.log
