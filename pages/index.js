@@ -5,7 +5,7 @@ import GameCard from '../components/GameCard';
 export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Today's MLB Games</h1>
+      <h1 className="text-3xl font-bold mb-6">Today&apos;s MLB Games</h1>
       
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Game Date</h2>
